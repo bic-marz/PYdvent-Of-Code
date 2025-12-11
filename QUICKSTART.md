@@ -37,7 +37,6 @@ python -m aoc 2025 2 --part 1
 
 ### 6. Optional tooling
 
-- `ruff check .` – lint/format suggestions
 - `pytest` – run tests once you add them
 
 That’s it! Every new day is a script away.
