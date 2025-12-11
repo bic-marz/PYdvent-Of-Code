@@ -63,9 +63,4 @@ advent_of_code/
 └── QUICKSTART.md
 ```
 
-## Tips
-
-- Keep multiple inputs per day (sample vs real) by storing files next to the default `dayXX.txt` and pass `--input` when running.
-- Test helpers with `pytest` once you add unit tests for tricky parsing logic.
-
 Happy puzzling! 🎄
