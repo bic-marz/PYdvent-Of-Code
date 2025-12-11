@@ -1,0 +1,15 @@
+__pycache__/
+.pytest_cache/
+.ruff_cache/
+.venv/
+*.pyc
+*.egg-info/
+**/build/
+**/.gradle/
+**/.idea/
+**/*.iml
+**/*.iws
+**/*.ipr
+**/out/
+**/.DS_Store
+**/local.properties
