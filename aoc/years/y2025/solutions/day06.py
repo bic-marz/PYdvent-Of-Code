@@ -23,9 +23,9 @@ class Day06(BaseChallenge):
                 numsAndOps[index].append(element.strip())
         
         opIndex = len(numsAndOps.get(1, [])) - 1
-        print(f"Operation Index: {opIndex}")
+        # print(f"Operation Index: {opIndex}")
         for index, elements in numsAndOps.items():
-            print(f"Index {index}: Elements: {elements}")
+            # print(f"Index {index}: Elements: {elements}")
             
             if opIndex < 0 or opIndex >= len(elements):
                 continue
