@@ -1,6 +1,6 @@
 # Advent of Code – Python Toolkit
 
-A lightweight Python workflow for solving [Advent of Code](https://adventofcode.com/) puzzles inside VS Code, complete with scaffolding, linting, and a friendly CLI runner.
+A lightweight Python workflow for solving [Advent of Code](https://adventofcode.com/) puzzles inside VS Code, with scaffolding and a friendly CLI runner.
 
 ## Requirements
 
