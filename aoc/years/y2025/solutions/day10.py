@@ -10,7 +10,7 @@ class Day10(BaseChallenge):
     identity = ChallengeIdentity(year=2025, day=10)
 
     def solve_part1(self, data: list[str]) -> str:
-        requirementsToButtonsAndStartingSchematics: dict[set[int], tuple[list[set[int]], list[set[int]]]] = {}
+        machines: list[tuple[str, list[set[int]]]] = []
         # Each line contains a single indicator light diagram in [square brackets], 
         # one or more button wiring schematics in (parentheses), 
         # and joltage requirements in {curly braces}, which we can ignore for the first part
@@ -29,18 +29,7 @@ class Day10(BaseChallenge):
                 button_schematics.append(set(map(int, line[open_paren+1:close_paren].split(','))))
                 start = close_paren + 1
             # requirements are ignored for part 1
-            requirementsToButtonsAndStartingSchematics[light_diagram] = (button_schematics, [])
-        
-        # for each line our start sets to turn on the lights are the 
-        # sets that contain the indices of '#' in the light diagram
-        for light_diagram, (button_schematics, _) in requirementsToButtonsAndStartingSchematics.items():
-            required_indices = {i for i, ch in enumerate(light_diagram) if ch == '#'}
-            startingSchematics = []
-            
-            for schematic in button_schematics:
-                if schematic.intersection(required_indices):
-                    startingSchematics.append(schematic)
-                requirementsToButtonsAndStartingSchematics[light_diagram] = (button_schematics, startingSchematics)
+            machines.append((light_diagram, button_schematics))
                 
         # print(f"Starting schematics: {requirementsToButtonsAndStartingSchematics}")
         # now we have starting schematics, we can try to find the minimum button presses
@@ -48,8 +37,15 @@ class Day10(BaseChallenge):
         # then all combinations of two, three etc., until we find the smallest set
         # that covers all, and only, the required indices
         currentTotalPresses = 0
-        for light_diagram, (button_schematics, startingSchematics) in requirementsToButtonsAndStartingSchematics.items():
+        for light_diagram, button_schematics in machines:
             required_indices = {i for i, ch in enumerate(light_diagram) if ch == '#'}
+            if not required_indices:
+                continue
+
+            startingSchematics = [
+                schematic for schematic in button_schematics if schematic.intersection(required_indices)
+            ]
+
             # print(f"Finding solution for light diagram: {light_diagram} with required indices: {required_indices}")
             found = False
             currentPresses = 0
